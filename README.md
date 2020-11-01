@@ -248,12 +248,12 @@ contract Ownable is Context {
     }
 ```  
 In this contract we see that this contract also has a constructor, which assigns the msg.sender as _owner. In solidity smart contracts, msg.sender is the account that is making the call to the function. That's us! We're the owner. The second solidity concept that gives us control over minting and burning tokens is modifiers. Modifiers are simply functinos that run before or after a function call. The underscore in a modifier represents when to call the funtion that the modifier is modifying. Now if we look at the `modifier` `onlyOwner`, we see a require statement, that ensures the caller is the owner. So, any function that has the modifier `onlyOwner`, ensures that only we can call that function. That's why we use that modifier in our contract's mint and burn methods, so that only we can mint burn.  
-
+#### Compiling our Contract
 let's go back one directory using:  
 `cd ..`  
 now let's compile our contracts by calling 
-`truffle compile`
-if we've done everthing correctly, our terminals should look somethign like  
+`truffle compile`  
+if we've done everthing correctly, our terminals should look somethign like    
 ```
 Compiling your contracts...
 ===========================
@@ -268,9 +268,21 @@ Compiling your contracts...
 > Compiled successfully using:
    - solc: 0.6.12+commit.27d51765.Emscripten.clang
 ```  
-Now that we know our contracts can compile, let's run:
-`truffle migrate --network moon`
-to deploy our contracts
+#### Deploying our Contract
+We need to change one last file before we can deploy. This file tell truffle what the deployment should actually do. In the migrations directory, there should be a file called `1_initial_migration.js`, replace it's contents with
+```javascript
+const Migrations = artifacts.require("Migrations");
+const DictatorDollar = artifacts.require("DictatorDollar");
+
+module.exports = async function (deployer) {
+  deployer.deploy(Migrations);
+  // give ourselves a bunch of money
+  deployer.deploy(DictatorDollar, "8000000000000000000000000");
+};
+```
+Now that we know our contracts can compile, let's run:  
+`truffle migrate --network moon`  
+to deploy our contracts  
 we should see something like:
 ```
 Compiling your contracts...
@@ -314,6 +326,6 @@ Summary
 > Total deployments:   1
 > Final cost:          0.0345739 ETH
 ```
-we did it! we are now the controller of our own DictatorDollars! We can print money and give it to whomever we feel like! We can also burn the dollars of whoever we want...
+We did it! we are now the controller of our own DictatorDollars! We can print money and give it to whomever we feel like! We can also burn the dollars of whoever we want...
 
 This quick tutorial shows us how to get started, but the real fun has yet to begin. Stay tuned for updates on the launch of the Moonbeam incentivized network launch, along with more tutorials to help us get ready to build the craziest financial-governance-DAO stuff ever seen!
