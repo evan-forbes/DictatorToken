@@ -7,10 +7,6 @@ module.exports = {
       provider: () => new PrivateKeyProvider(privateKey, "http://localhost:9933/", 43),
       network_id: 43
     },
-    live: {
-      provider: () => new PrivateKeyProvider(privateKey, "http://35.203.125.209:9933/", 43),
-      network_id: 43
-    },
     moon: {
       provider: () => new PrivateKeyProvider(privateKey, "https://rpc.testnet.moonbeam.network", 43),
       network_id: 43
