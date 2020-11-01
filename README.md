@@ -223,7 +223,9 @@ contract DictatorDollar is ERC20, Ownable {
     }
 }
 ```
-Let's dig into this contract a little bit. To describe it quickly, the contract we're defining is using code from the two contracts we're inheriting from. This means that it's as if we took all the code in ERC20 and Ownable and put it in our contract. Then we're defining 3 additional methods to that contract. The constructor tells the compiler what to do right after we deploy the contract. While the two methods, mint and burn, enable `public` functionality, meaning anyone can call these functions. Well, anyone *can* call these functions, but that doesn't mean that the functions will *work*. In fact, if we dig a little deeper into the code that we [imported](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol), we can find out why.
+Let's dig into this contract a little bit. To describe it quickly, the contract we're defining is using code from the two contracts we're inheriting from. This means that it's as if we took all the code in ERC20 and Ownable and put it in our contract. Then we're defining 3 additional methods to that contract. 
+
+The constructor tells the compiler what to do right after we deploy the contract. While the two methods, mint and burn, enable `public` functionality, meaning anyone can call these functions. Well, anyone *can* call these functions, but that doesn't mean that the functions will *work*. In fact, if we dig a little deeper into the code that we [imported](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol), we can find out why.
 ```solidity
 contract Ownable is Context {
     address private _owner;
@@ -247,7 +249,9 @@ contract Ownable is Context {
         _;
     }
 ```  
-In this contract we see that this contract also has a constructor, which assigns the msg.sender as _owner. In solidity smart contracts, msg.sender is the account that is making the call to the function. That's us! We're the owner. The second solidity concept that gives us control over minting and burning tokens is modifiers. Modifiers are simply functinos that run before or after a function call. The underscore in a modifier represents when to call the funtion that the modifier is modifying. Now if we look at the `modifier` `onlyOwner`, we see a require statement, that ensures the caller is the owner. So, any function that has the modifier `onlyOwner`, ensures that only we can call that function. That's why we use that modifier in our contract's mint and burn methods, so that only we can mint burn.  
+In this contract we see that this contract also has a constructor, which assigns the msg.sender as _owner. In solidity smart contracts, msg.sender is the account that is making the call to the function. That's us! We're the owner. The second solidity concept that gives us control over minting and burning tokens is modifiers. 
+
+Modifiers are simply functinos that run before or after a function call. The underscore in a modifier represents when to call the funtion that the modifier is modifying. Now if we look at the `modifier` `onlyOwner`, we see a require statement, that ensures the caller is the owner. So, any function that has the modifier `onlyOwner`, ensures that only we can call that function. That's why we use that modifier in our contract's mint and burn methods, so that only we can mint burn.  
 #### Compiling our Contract
 let's go back one directory using:  
 `cd ..`  
