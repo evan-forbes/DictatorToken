@@ -249,7 +249,7 @@ contract Ownable is Context {
         _;
     }
 ```  
-We see that this contract also has a constructor, which assigns the msg.sender as _owner. In solidity smart contracts, msg.sender is the account that is making the call to the function. That's us! We're the owner. The second solidity concept that gives us control over minting and burning tokens is modifiers. 
+We see that this contract also has a constructor, which assigns the msg.sender as _owner. In solidity smart contracts, msg.sender is the account that is making the call to the function. That's us! We're the ones sending the message to deploy the contract, therefore, we are the owner. The second solidity concept that gives us control over minting and burning tokens is modifiers. 
 
 Modifiers are simply functinos that run before or after a function call. The underscore in a modifier represents when to call the funtion that the modifier is modifying. Now if we look at the `modifier` `onlyOwner`, we see a require statement, that ensures the caller is the owner. So, any function that has the modifier `onlyOwner`, ensures that only we can call that function. That's why we use that modifier in our contract's mint and burn methods, so that only we can mint burn.  
 #### Compiling our Contract
