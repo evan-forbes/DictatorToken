@@ -18,7 +18,7 @@ TLDR; if you've used truffle before, you can just fork [this](https://github.com
 
 Before we begin, I just want provide a little encouragement to those of us who are just getting started with programming/blockchain. Things are going to break. That's okay. You've got this. The pay-off is worth it, it's just going to take some time is all. We're [here](https://discord.com/channels/745382242326413442/748926166815080509) to help if you need it. Chances are, if you're running into a problem, others have run into the exact same problem as well. The search engine is your friend.
 
-As mentioned above, Moonbeam and its incentivized test network fully utilize ethereum tooling. Launching a project on one of these networks is just as easy as it to launch on ethereum! While we wait for the incentivized test network to launch, let's get some practice in on the boring old non-incentivized test network. You know what, let's go ahead and launch a copy of the world renowned [Uniswap](https://uniswap.org/) decentralized exchange.
+As mentioned above, Moonbeam and its incentivized test network fully utilize ethereum tooling. Launching a project on one of these networks is just as easy as it to launch on ethereum! While we wait for the incentivized test network to launch, let's get some practice in on the boring old non-incentivized test network.
 
 ### Install Dependencies 
 This tutorial also assumes that you have access to a unix (mac or linux) command line. For those on windows, [try this](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/).
