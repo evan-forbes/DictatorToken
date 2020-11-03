@@ -1,5 +1,5 @@
 # Moonbeam Incentivized Test Network: The Best Video Game Ever Made
-[Moonbeam](https://moonbeam.network/) will soon launch an incentivized test network. This means that the more ambitious and jovial among us have a unique opportunity awaiting. Not only can we build experimental governance structures with the most innovative financial tooling in the space, but also make (figuratively and literally) real money! All while helping to beta test cutting-edge technology, hence, "The Best Video Game Ever Made".
+[Moonbeam](https://moonbeam.network/) will soon launch an incentivized test network. This means that the more ambitious and jovial among us have a unique opportunity awaiting. Not only can we build experimental governance structures with the most innovative financial tooling in the space, but also make real money(figuratively and literally)! All while helping to beta test cutting-edge technology, hence, "The Best Video Game Ever Made".
 
 ## What is Moonbeam?
 Moonbeam is a blockchain. More aptly, a fully ethereum compatible [parachain](https://wiki.polkadot.network/docs/en/learn-parachains) that capitalizes on the [Substrate](https://substrate.dev/) framework. This provides Moonbeam with unique technical capabilities and an interesting position in the blockchain space.
@@ -125,7 +125,7 @@ contract Ownable is Context {
 ```  
 We see that this contract also has a constructor, which assigns the msg.sender as _owner. In solidity smart contracts, msg.sender is the account that is making the call to the function. That's us! We're the ones sending the message to deploy the contract, therefore, we are the owner. The second solidity concept that gives us control over minting and burning tokens is modifiers. 
 
-Modifiers are simply functions that run before or after a function call. The underscore in a modifier represents when to call the funtion that the modifier is modifying. Now if we look at the `modifier` `onlyOwner`, we see a require statement, that ensures the caller is the owner. So, any function that has the modifier `onlyOwner`, ensures that only we can call that function. That's why we use that modifier in our contract's mint and burn methods, so that only we can mint burn.  
+Modifiers are simply functions that run before or after a function call. The underscore in a modifier represents when to call the funtion that the modifier is modifying. Now if we look at the `modifier` `onlyOwner`, we see a require statement, that ensures the caller is the owner. So, any function that has the modifier `onlyOwner`, ensures that only we can call that function. That's why we use that modifier in our contract's mint and burn methods, so that only we can mint and burn.  
 #### Compiling our Contract
 let's go back one directory using:  
 `cd ..`  
@@ -147,14 +147,14 @@ Compiling your contracts...
    - solc: 0.6.12+commit.27d51765.Emscripten.clang
 ```  
 #### Deploying our Contract
-We need to change one last file before we can deploy. This file tell truffle what the deployment should actually do. In the migrations directory, there should be a file called `1_initial_migration.js`, replace it's contents with
+We need to change one last file before we can deploy. This file tells truffle what code it should run when we run the `truffle migrate` command. In the migrations directory, there should be a file called `1_initial_migration.js`, replace it's contents with
 ```javascript
 const Migrations = artifacts.require("Migrations");
 const DictatorDollar = artifacts.require("DictatorDollar");
 
 module.exports = async function (deployer) {
   deployer.deploy(Migrations);
-  // give ourselves a bunch of money
+  // deploy our dictator contract and give ourselves a bunch of money
   deployer.deploy(DictatorDollar, "8000000000000000000000000");
 };
 ```
@@ -204,6 +204,6 @@ Summary
 > Total deployments:   1
 > Final cost:          0.0345739 ETH
 ```
-We did it! we are now the controller of our own DictatorDollars! We can print money and give it to whomever we feel like! We can also burn the dollars of whoever we want...
+We did it! We are now the controller of our own DictatorDollars! We can print money and give it to whomever we feel like! We can also burn any dollar at a moments notice...
 
 This quick tutorial shows us how to get started, but the real fun has yet to begin. Stay tuned for updates on the launch of the Moonbeam incentivized network launch, along with more tutorials to help us get ready to build the craziest financial-governance-DAO stuff ever seen!
